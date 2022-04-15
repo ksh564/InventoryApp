@@ -30,8 +30,7 @@ class ItemListAdapter(private val onItemClicked: (Item) -> Unit) :
         holder.bind(current)
     }
 
-    class ItemViewHolder(private var binding: ItemListItemBinding)
-        : RecyclerView.ViewHolder(binding.root) {
+    class ItemViewHolder(private var binding: ItemListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Item) {
             binding.apply {
