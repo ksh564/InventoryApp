@@ -31,6 +31,11 @@ import com.example.inventory.databinding.ItemListFragmentBinding
  */
 class ItemListFragment : Fragment() {
 
+    val adapter = ItemListAdapter {
+        val action = ItemListFragmentDirections.actionItemListFragmentToItemDetailFragment(it.id)
+        this.findNavController().navigate(action)
+    }
+
     private var _binding: ItemListFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: InventoryViewModel by activityViewModels {
@@ -51,7 +56,8 @@ class ItemListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ItemListAdapter {
-            val action = ItemListFragmentDirections.actionItemListFragmentToItemDetailFragment(it.id)
+            val action =
+                ItemListFragmentDirections.actionItemListFragmentToItemDetailFragment(it.id)
             findNavController().navigate(action)
         }
         binding.recyclerView.adapter = adapter
